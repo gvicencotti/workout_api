@@ -1,14 +1,11 @@
-from sqlalchemy import Integer, String
-from sqlalchemy.orm import Mapped, mapped_column, relationship
-from workout_api.contrib.models import BaseModel
-from workout_api.atleta.models import AtletaModel
+# workout_api/centro_treinamento/models.py
+from sqlalchemy import Column, Integer, String
+from sqlalchemy.orm import relationship
+from workout_api.database import Base
 
+class CentroTreinamentoModel(Base):
+    __tablename__ = "centros_treinamento"
 
-class CentroTreinamentoModel(BaseModel):
-    __tablename__ = 'centros_treinamento'
-
-    pk_id: Mapped[int] = mapped_column(Integer, primary_key=True)
-    nome: Mapped[str] = mapped_column(String(50), unique=True, nullable=False)
-    endereco: Mapped[str] = mapped_column(String(60), nullable=False)
-    proprietario: Mapped[str] = mapped_column(String(30), nullable=False)
-    atleta: Mapped['AtletaModel'] = relationship(back_populates='centro_treinamento')
+    id = Column(Integer, primary_key=True, index=True)
+    nome = Column(String, index=True)
+    atletas = relationship("AtletaModel", back_populates="centro_treinamento")
