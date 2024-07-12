@@ -6,6 +6,7 @@ from fastapi_pagination import Page, add_pagination, paginate
 from fastapi_pagination.ext.sqlalchemy import paginate as sqlalchemy_paginate
 from models import Atleta, AtletaCreate
 from database import get_db
+from pydantic import BaseModel
 
 app = FastAPI()
 add_pagination(app)

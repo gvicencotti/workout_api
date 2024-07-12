@@ -4,8 +4,9 @@ from sqlalchemy.orm import Session
 from starlette.responses import JSONResponse
 from fastapi_pagination import Page, add_pagination, paginate
 from fastapi_pagination.ext.sqlalchemy import paginate as sqlalchemy_paginate
-from models import Atleta, AtletaCreate
-from database import get_db
+from workout_api.database import get_db
+from workout_api.models import Atleta, AtletaCreate
+from pydantic import BaseModel
 
 app = FastAPI()
 add_pagination(app)
