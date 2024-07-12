@@ -17,3 +17,6 @@ class AtletaCreate(BaseModel):
     cpf: str
     centro_treinamento: str
     categoria: str
+
+    class Config:
+        orm_mode = True
